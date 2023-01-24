@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>HomeExperts</title>
+{% endblock %}
+
+{% block body %}
+<center>
+    <h1>Bun venit la HomeExperts, {{ NUME_USER }}! Spor la lucru! </h1>
+    <h1 style="font-size: medium;">Un lider adevarat nu spune "Construiti podul!", el spune "Hai sa construim podul!&#128515;" </h1>
+</center>
+<center>
+    <div class ="meniu">
+        <nav>
+            <ul>
+                <li><a href="/mainmanager/cont"> Contul Meu </a></li>
+                <li><a href="/mainmanager/comenzistats"> Statistici Comenzi</a></li>   
+                <li><a href="/mainmanager/comenziall"> Toate Comenzile  </a></li>
+
+                <li><a href="/mainmanager/workerstats"> Statistici Angajati  </a></li>   
+                <li><a href="/mainmanager/serviciistats"> Statistici Servicii  </a></li>
+   
+                <li><a href="/main/logout"> Deconecteaza-ma </a></li>   
+
+            </ul>
+        </nav>
+    </div>
+    <div class = "imagine">
+        <img src="/static/images/backgroundimg2.jpg">
+
+    </div>
+</center>
+{% endblock %}

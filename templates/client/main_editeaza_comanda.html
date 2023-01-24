@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>HomeExperts - Cumpara</title>
+{% endblock %}
+
+{% block body %}
+<center>
+    <h1>Modificati comanda</h1>
+</center>
+<center>
+    <div class ="meniu">
+        <nav>
+            <ul>
+                <li><a href="/main/cont"> Contul Meu </a></li>
+                <li><a href="/main/cumpara"> Plaseaza o comanda </a></li>   
+                <li><a href="/main/comenzi"> Comenzile mele </a></li>   
+                <li><a href="/main/logout"> Deconecteaza-ma </a></li>   
+
+            </ul>
+        </nav>
+    </div>
+    <div class="plasare_comanda">
+        <form action="#" method="post">
+            <center><div class="container">
+                <table class="serviciu_adresa"  style="width: 70%;">
+                   
+                    {% for j in range(1,SERVICII|length + 1) %}
+                    
+                    <tr >
+                        <td style="width: 10%;padding: 0px;">
+                            <select style="width: 100%" name="serviciu{{ j }}" id="serviciu" required>
+                                <option value=""  >Alegeti un serviciu</option>
+                               
+                                {% for i in range(1,SERVICII_DISP|length + 1) %}
+    
+                                {% if SERVICII[j - 1 ][0]  == i|string() or SERVICII[j - 1 ][0]  == i %} 
+                                <option value="{{ i }}"  selected="selected"  >{{ SERVICII_DISP[i-1][1] }} {{ SERVICII_DISP[i-1][2] }}$</option>
+                                {% else %}    
+                                <option value="{{ i }}" >{{ SERVICII_DISP[i-1][1] }} {{ SERVICII_DISP[i-1][2] }}$</option>
+                                {% endif %}
+                                {% endfor %}
+                            </select><br>
+                        </td>
+                        <td style="width: 30%;">    
+                            <input style="width: 100%; "  type="text" placeholder="Adresa livrare" value="{{ SERVICII[j-1][1] }}" name="address{{ j }}" float="right"  required><br>                    
+                        </td> 
+                        <td style="width: 5%; padding: 0px; justify-content: center;align-items: center;">
+                            <button style="width: 100%;" type="submit" name="action" value="sterge,{{ SERVICII|length }},{{ j-1 }}"><b>Sterge</b></button><br><br> 
+
+                        </td>   
+                    </tr>
+
+                    {% endfor %}
+                    
+                </table>
+                
+                <button class="buton_scurt" type="submit" name="action" value="adauga,{{ SERVICII|length }}"><b>Adauga serviciu</b></button><br><br> 
+                {% if SERVICII|length != 0 %}
+                <button type="submit" name="action" value="comanda,{{ SERVICII|length }}" ><b>Confirmati modificarile</b></button><br> 
+                {% endif %}    
+                </div></center>
+        </form>
+            <b><a href="/main/comenzi"> Anuleaza </a></b>   
+    </div>
+</center>
+{% endblock %}

@@ -1,0 +1,151 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+ 
+}
+button{
+    background-color: #4CAF50;
+    width: 25%;
+    padding: 15px;
+    color: black;
+    border: none;
+    float: center;
+    font-size: 15px;
+}
+
+button.buton_scurt{
+    background-color: #4CAF50;
+    width: 15%;
+    padding: 15px;
+    color: black;
+    border: none;
+    float: center;
+    font-size: 15px;
+}
+
+label{
+    font-size: 20px;
+}
+
+input[type=email],input[type=password],input[type=text],input[type=number]{
+    width: 50%;
+    font-size: 15px;
+    margin: 8px 0px;
+    padding: 12px 20px;
+    display: inline-block;
+    border: 2px solid green;
+    box-sizing: border-box;
+}
+
+input[type=radio]{
+    height: 18px;
+    width: 18px;
+}
+button:hover{
+    opacity:0.7;
+
+}
+.container{
+    padding: 50px;
+
+}
+.imgcontainer {
+    text-align: center;
+    margin: 24px 0 12px 0;
+}
+  
+img.avatar {
+    width: 10%;
+    border-radius: 50%;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px;
+
+   
+
+}
+
+ ul li{
+    list-style-type: none;
+    display: inline-block;
+    padding:10px 40px;
+    padding-inline-start: 0px;
+    font-size: 40px;
+}
+
+ul li a{
+    color: green;
+    text-decoration: none;
+    font-weight: bold;
+
+}
+ul{
+    font-weight: bold;
+
+}
+ul li a:hover{
+    color: #4CAF50;
+    transition: .3s;
+}
+
+.nume_camp{
+    text-align: left;
+    width: 30%;
+}
+.continut_camp{
+    text-align: right;
+    padding-left: 60px;
+    width: 70%;
+}
+table{
+    font-size: 30px;
+}
+
+select {
+    /* Reset Select */
+    appearance: none;
+    outline: 0;
+    border: 0;
+    box-shadow: none;
+    /* Personalize */
+    flex: 1;
+    padding: 0 1em;
+    color: black;
+    background-color: #4CAF50;
+    background-image: none;
+    cursor: pointer;
+    font-size: 20px;
+    width: 15%;
+    height: 43px;
+    font-weight: bold;
+    text-align: center;
+    border: 2px solid green;
+  }
+  .tabel_servicii_comanda_client{
+   
+    border-collapse: collapse;
+    border: 10px solid black;
+    border-style: hidden;
+    
+  }
+
+.preiabuton{
+    
+    width: 100%;
+    font-weight: bold;
+    height: 10px;
+    line-height: 8px;
+    background-color: rgba(160,145,112,1);
+    color: black;
+    border-style: solid;
+    border-color: black;
+    
+    
+    
+}
+.preiabuton:hover{
+    opacity: 0.7;
+}

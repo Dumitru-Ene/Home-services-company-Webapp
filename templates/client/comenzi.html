@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>HomeExperts - Comenzi</title>
+{% endblock %}
+
+{% block body %}
+<center>
+    <h1>Comenzile dumneavoastra</h1>
+</center>
+<center>
+    <div class ="meniu">
+        <nav>
+            <ul>
+                <li><a href="/main/cont"> Contul Meu </a></li>
+                <li><a href="/main/cumpara"> Plaseaza o comanda </a></li>   
+                <li> Comenzile mele </li>   
+                <li><a href="/main/logout"> Deconecteaza-ma </a></li>   
+
+            </ul>
+        </nav>
+    </div>
+    {% if COMENZI|length == 0 %}
+    <p style="font-size: x-large;">Deocamdata nu aveti nicio comanda &#128577; </p>
+    <p style="font-size: x-large;"> De ce nu faceti una chiar acum? &#128513;</p>
+    {% else %}
+    <div class="comenzi" >
+        {% for comanda in COMENZI %}
+        <div class="comanda_client" id = "comanda{{ loop.index }}">
+            <table style="background-color: beige; width: 70%;" border="thin" >
+                <tr>
+                    <th>Cod Comanda:</th>
+                    <th>{{ comanda[0][0] }}</th>
+                </tr>
+                <tr>
+                    <th>Data :</th>
+                    <th>{{ comanda[0][3] }}</th>
+                </tr>
+                <tr>
+                    <th>Suma :</th>
+                    <th>{{ comanda[0][2] }}$</th>
+                </tr>
+                <tr>
+                    <th>Stadiu :</th>
+                    {% if comanda[2] %}
+                    <th style="color: rgb(10, 233, 10);">Preluata</th>
+                    {% else %}
+                    <th style="color: rgb(233, 136, 10);">In curs</th>
+                    {% endif %}
+                </tr>
+                <tr>
+                    <th colspan="2">&#8681 SERVICII &#8681</th>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <table class="tabel_servicii_comanda_client" style="width: 100%;" border="thin">
+                            <tr style="background-color: #e1d9b7;font-size: medium;" >
+                                <td style="width: 5%;">PRET</td>
+                                <td style="width: 20%;">SERVICIU</td>
+                                <td style="width: 75%;">ADRESA</td>
+                            
+                            </tr>
+                            {% for serviciu in comanda[1] %}
+                            <tr>
+                                <td style="padding-left: 15px; padding-right: 15px;">{{ serviciu[2] }}$</td>
+                                <td style="padding-left: 15px; padding-right: 15px;">{{ serviciu[0] }}</td>
+                                <td style="padding-left: 15px; padding-right: 15px;">{{ serviciu[1] }}</td>
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </th>
+                </tr>
+            </table>
+        </div>
+        <ul>
+            <li style="font-size: x-large;"><a href="/main/comenzi/anuleaza{{ comanda[0][0] }}">Anuleaza Comanda</a></li>
+            <li style="font-size: x-large;"><a href="/main/comenzi/modifica{{ comanda[0][0] }}">Modificati Comanda</a></li>   
+        </ul><br><br>
+        {% endfor %}
+    </div>
+    {% endif %}
+</center>
+{% endblock %}

@@ -1,0 +1,123 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>HomeExperts</title>
+
+  
+{% endblock %}
+
+{% block body %}
+<center>
+    <h1>Statistici despre angajati</h1>
+</center>
+<center>
+    <div class ="meniu">
+        <nav>
+            <ul>
+                <li><a href="/mainmanager/cont"> Contul Meu </a></li>
+                
+                <li><a href="/mainmanager/comenzistats"> Statistici Comenzi</a></li>   
+                <li><a href="/mainmanager/comenziall"> Toate Comenzile  </a></li>
+
+
+                <li> Statistici Angajati </li>   
+                <li><a href="/mainmanager/serviciistats"> Statistici Servicii  </a></li>
+                <li><a href="/main/logout"> Deconecteaza-ma </a></li>      
+
+            </ul>
+        </nav>
+    </div>
+    
+    <div class="detalii_angajati">
+        {% if ANGAJATI|length == 0 %}
+        <p style="font-size: xx-large;"> Compania asta nu va ajunge prea departe fara angajati...</p>
+   
+        {% else %}
+        <p style="font-size: xx-large;"> Angajatii firmei sunt:</p>
+
+        {% for angajat in ANGAJATI %}
+        <div class="detalii_angajat">
+            <table border="thin" style="width: 40%;">
+                <tr style="background-color:#f0f0f0">
+                    <th class="nume_camp">Nume: </th>
+                    <th class="continut_camp"> {{ angajat[0] }}</th>
+                </tr>
+                <tr>
+                    <th class="nume_camp">Preume: </th>
+                    <th class="continut_camp"> {{ angajat[1] }}</th>
+                </tr>
+                <tr style="background-color:#f0f0f0">
+                    <th class="nume_camp">Email: </th>
+                    <th class="continut_camp"> {{ angajat[2] }}</th>
+                </tr>
+                <tr >
+                    <th class="nume_camp">Salariu: </th>
+                    <th class="continut_camp"> {{ angajat[3] }}</th>
+                </tr>
+                <tr style="background-color:#f0f0f0">
+                    <th class="nume_camp">Departament: </th>
+                    <th class="continut_camp"> {{ angajat[4] }}</th>
+                </tr>
+            </table>
+        </div><br><br>
+        {% endfor %}
+        {% endif %}<br><br>
+        {% if FARA_COMENZI==FALSE %}
+        <p style="font-size: xx-large;"> Angajatul cu cei mai multi bani adusi in companie ( {{ ANGAJAT_SUMA_MARE[5] }}$ ) prin preluarea de servicii este:</p>
+        <div class="detalii_angajat">
+            <table border="thin" style="width: 40%;">
+                <tr style="background-color:#f0f0f0">
+                    <th class="nume_camp">Nume: </th>
+                    <th class="continut_camp"> {{ ANGAJAT_SUMA_MARE[0] }}</th>
+                </tr>
+                <tr>
+                    <th class="nume_camp">Preume: </th>
+                    <th class="continut_camp"> {{ ANGAJAT_SUMA_MARE[1] }}</th>
+                </tr>
+                <tr style="background-color:#f0f0f0">
+                    <th class="nume_camp">Email: </th>
+                    <th class="continut_camp"> {{ ANGAJAT_SUMA_MARE[2] }}</th>
+                </tr>
+                <tr >
+                    <th class="nume_camp">Salariu: </th>
+                    <th class="continut_camp"> {{ ANGAJAT_SUMA_MARE[3] }}</th>
+                </tr>
+                <tr style="background-color:#f0f0f0">
+                    <th class="nume_camp">Departament: </th>
+                    <th class="continut_camp"> {{ ANGAJAT_SUMA_MARE[4] }}</th>
+                </tr>
+            </table>
+        </div><br><br>
+        <p style="font-size: xx-large;"> Angajatul cu cele mai multe comenzi preluate integral este:</p>
+        <div class="detalii_angajat">
+            <table border="thin" style="width: 40%;">
+                <tr style="background-color:#f0f0f0">
+                    <th class="nume_camp">Nume: </th>
+                    <th class="continut_camp"> {{ ANGAJAT_COMENZI_FULL[0] }}</th>
+                </tr>
+                <tr>
+                    <th class="nume_camp">Preume: </th>
+                    <th class="continut_camp"> {{ ANGAJAT_COMENZI_FULL[1] }}</th>
+                </tr>
+                <tr style="background-color:#f0f0f0">
+                    <th class="nume_camp">Email: </th>
+                    <th class="continut_camp"> {{ ANGAJAT_COMENZI_FULL[2] }}</th>
+                </tr>
+                <tr >
+                    <th class="nume_camp">Salariu: </th>
+                    <th class="continut_camp"> {{ ANGAJAT_COMENZI_FULL[3] }}</th>
+                </tr>
+                <tr style="background-color:#f0f0f0">
+                    <th class="nume_camp">Departament: </th>
+                    <th class="continut_camp"> {{ ANGAJAT_COMENZI_FULL[4] }}</th>
+                </tr>
+            </table>
+        </div><br><br>
+        {% else %}
+        <p style="font-size: xx-large;"> Aveti nevoie de mai multe comenzi pentru aceste statistici</p>
+
+        {% endif %}
+    </div>
+    
+</center>
+{% endblock %}

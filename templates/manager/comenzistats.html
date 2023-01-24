@@ -1,0 +1,220 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>HomeExperts - Comenzi</title>
+{% endblock %}
+
+{% block body %}
+<center>
+    <h1>Statistici despre comenzi &#x1f4c8;</h1>
+</center>
+<center>
+    <div class ="meniu">
+        <nav>
+            <ul>
+                <li><a href="/mainmanager/cont"> Contul Meu </a></li>
+                <li> Statistici Comenzi</li>  
+                <li><a href="/mainmanager/comenziall"> Toate Comenzile  </a></li>
+
+ 
+                <li><a href="/mainmanager/workerstats"> Statistici Angajati  </a></li>   
+                <li><a href="/mainmanager/serviciistats"> Statistici Servicii  </a></li>
+   
+                <li><a href="/main/logout"> Deconecteaza-ma </a></li>   
+
+            </ul>
+        </nav>
+    </div>
+    
+    {% if COMENZI|length == 0 %}
+    <p style="font-size: x-large;">Nu exista comenzi! </p>
+   
+    {% else %}
+    <p style="font-size: xx-large;"> Media sumei comenzilor este: {{ MEDIE_SUMA }}$</p>
+
+    <p style="font-size: xx-large;"> Comenzile care au suma peste medie sunt:</p>
+    <div class="comenzi" >
+        {% for comanda in COMENZI %}
+        <div class="comanda_client" id = "comanda{{ loop.index }}">
+            <table style="background-color: beige; width: 85%;" border="thin" >
+                <tr>
+                    <th>Cod Comanda:</th>
+                    <th>{{ comanda[0][3] }}</th>
+                </tr>
+                <tr>
+                    <th>Nume si Prenume Client:</th>
+                    <th>{{ comanda[0][0] }} {{ comanda[0][1] }}</th>
+                </tr>
+                <tr>
+                    <th>Email Client:</th>
+                    <th>{{ comanda[0][2] }}</th>
+                </tr>
+                
+                <tr>
+                    <th>Data :</th>
+                    <th>{{ comanda[0][5] }}</th>
+                </tr>
+                <tr>
+                    <th>Suma :</th>
+                    <th>{{ comanda[0][4] }}$</th>
+                </tr>
+                {% if comanda[2]|length !=0 %}
+                <tr>
+                    <th style="background-color: #e1d9b7;" colspan="2">&#8681 SERVICII NEPRELUATE &#8681</th>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <table class="tabel_servicii_comanda_client" style="width: 100%;" border="thin">
+                            <tr style="background-color: #e1d9b7;font-size: medium;" >
+                                <td style="width: 5%;">PRET</td>
+                                <td style="width: 20%;">SERVICIU</td>
+                                <td style="width: 75%;">ADRESA</td>
+                             
+                                
+                            </tr>
+                            {% for serviciu in comanda[2] %}
+                            <tr>
+                                <td style="padding-left: 15px; padding-right: 15px;">{{ serviciu[0] }}$</td>
+                                <td style="padding-left: 15px; padding-right: 15px;">{{ serviciu[1] }}</td>
+                                <td style="padding-left: 15px; padding-right: 15px;">{{ serviciu[2] }}</td>
+                                <!--
+                                <td style="padding-left: 15px; padding-right: 15px;"><form method="POST" action="#"><button type="submit" name="action" class="preiabuton" value="{{ serviciu[3] }}">PREIA SERVICIUL </button></form></td>
+                                -->
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </th>
+                </tr>
+                {% endif %}
+                {% if comanda[1]|length !=0 %}
+                <tr>
+                    <th style="background-color: #e1d9b7;" colspan="2">&#8681 SERVICII PRELUATE &#8681</th>
+                </tr>
+                
+                <tr>
+                    <th colspan="2">
+                        <table class="tabel_servicii_comanda_client" style="width: 100%;" border="thin">
+                            <tr style="background-color: #e1d9b7;font-size: medium;" >
+                                <td style="width: 5%;">PRET</td>
+                                <td style="width: 20%;">SERVICIU</td>
+                                <td style="width: 50%;">ADRESA</td>
+                                <td style="width: 25%;">PRELUAT DE</td>
+            
+                 
+                            </tr>
+                            {% for serviciu in comanda[1] %}
+                            <tr>
+                                <td style="padding-left: 15px; padding-right: 15px;">{{ serviciu[0] }}$</td>
+                                <td style="padding-left: 15px; padding-right: 15px;">{{ serviciu[1] }}</td>
+                                <td style="padding-left: 15px; padding-right: 15px;">{{ serviciu[2] }}</td>
+                                <td style="padding-left: 15px; padding-right: 15px;">{{ serviciu[3] }} {{ serviciu[4] }}</td>
+                               
+                                
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </th>
+                </tr>
+                {% endif %}
+            </table>
+        </div>
+        <br><br><br><br>
+        {% endfor %}
+    </div>
+
+
+    <br><br><br><br>
+
+    <p style="font-size: xx-large;"> Cele mai lungi comenzi sunt:</p>
+    <div class="comenzi" >
+        {% for comanda in COMENZI_SERVICII_MAX %}
+        <div class="comanda_client" id = "comanda{{ loop.index }}">
+            <table style="background-color: beige; width: 85%;" border="thin" >
+                <tr>
+                    <th>Cod Comanda:</th>
+                    <th>{{ comanda[0][3] }}</th>
+                </tr>
+                <tr>
+                    <th>Nume si Prenume Client:</th>
+                    <th>{{ comanda[0][0] }} {{ comanda[0][1] }}</th>
+                </tr>
+                <tr>
+                    <th>Email Client:</th>
+                    <th>{{ comanda[0][2] }}</th>
+                </tr>
+                
+                <tr>
+                    <th>Data :</th>
+                    <th>{{ comanda[0][5] }}</th>
+                </tr>
+                <tr>
+                    <th>Suma :</th>
+                    <th>{{ comanda[0][4] }}$</th>
+                </tr>
+                {% if comanda[2]|length !=0 %}
+                <tr>
+                    <th style="background-color: #e1d9b7;" colspan="2">&#8681 SERVICII NEPRELUATE &#8681</th>
+                </tr>
+                <tr>
+                    <th colspan="2">
+                        <table class="tabel_servicii_comanda_client" style="width: 100%;" border="thin">
+                            <tr style="background-color: #e1d9b7;font-size: medium;" >
+                                <td style="width: 5%;">PRET</td>
+                                <td style="width: 20%;">SERVICIU</td>
+                                <td style="width: 75%;">ADRESA</td>
+                             
+                                
+                            </tr>
+                            {% for serviciu in comanda[2] %}
+                            <tr>
+                                <td style="padding-left: 15px; padding-right: 15px;">{{ serviciu[0] }}$</td>
+                                <td style="padding-left: 15px; padding-right: 15px;">{{ serviciu[1] }}</td>
+                                <td style="padding-left: 15px; padding-right: 15px;">{{ serviciu[2] }}</td>
+                                <!--
+                                <td style="padding-left: 15px; padding-right: 15px;"><form method="POST" action="#"><button type="submit" name="action" class="preiabuton" value="{{ serviciu[3] }}">PREIA SERVICIUL </button></form></td>
+                                -->
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </th>
+                </tr>
+                {% endif %}
+                {% if comanda[1]|length !=0 %}
+                <tr>
+                    <th style="background-color: #e1d9b7;" colspan="2">&#8681 SERVICII PRELUATE &#8681</th>
+                </tr>
+                
+                <tr>
+                    <th colspan="2">
+                        <table class="tabel_servicii_comanda_client" style="width: 100%;" border="thin">
+                            <tr style="background-color: #e1d9b7;font-size: medium;" >
+                                <td style="width: 5%;">PRET</td>
+                                <td style="width: 20%;">SERVICIU</td>
+                                <td style="width: 50%;">ADRESA</td>
+                                <td style="width: 25%;">PRELUAT DE</td>
+            
+                 
+                            </tr>
+                            {% for serviciu in comanda[1] %}
+                            <tr>
+                                <td style="padding-left: 15px; padding-right: 15px;">{{ serviciu[0] }}$</td>
+                                <td style="padding-left: 15px; padding-right: 15px;">{{ serviciu[1] }}</td>
+                                <td style="padding-left: 15px; padding-right: 15px;">{{ serviciu[2] }}</td>
+                                <td style="padding-left: 15px; padding-right: 15px;">{{ serviciu[3] }} {{ serviciu[4] }}</td>
+                               
+                                
+                            </tr>
+                            {% endfor %}
+                        </table>
+                    </th>
+                </tr>
+                {% endif %}
+            </table>
+        </div>
+        <br><br><br><br>
+        {% endfor %}
+    </div>
+
+    {% endif %}
+</center>
+{% endblock %}

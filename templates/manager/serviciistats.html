@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>HomeExperts</title>
+{% endblock %}
+
+{% block body %}
+<center>
+    <h1>Statistici despre servicii &#128202;</h1>
+</center>
+<center>
+    <div class ="meniu">
+        <nav>
+            <ul>
+                <li><a href="/mainmanager/cont"> Contul Meu </a></li>
+                
+                <li><a href="/mainmanager/comenzistats"> Statistici Comenzi</a></li>   
+                <li><a href="/mainmanager/comenziall"> Toate Comenzile  </a></li>
+
+
+                <li><a href="/mainmanager/workerstats"> Statistici Angajati  </a></li>   
+                <li> Statistici Servicii  </li>
+                <li><a href="/main/logout"> Deconecteaza-ma </a></li>      
+
+            </ul>
+        </nav>
+    </div>
+    
+    <div style="width: 40%; border-style: solid;" class="creare_servicii">
+        <form style="padding-left: 20px; padding-right: 20px;"  action="#" method="POST">
+            <input style="width: 100%;" type="text" placeholder="Introduceti denumirea serviciului" name="denumire" required><br>
+            <input style="width: 30%;" type="number" placeholder="pretul serviciului" name="pret_serviciu" required><br>
+            <button type="submit"  style="width: 30%;" name="lol" class="preiabuton" >ADAUGA SERVICIU </button>
+              
+        </form> <br>  
+    </div>
+
+    <div class="detalii_servicii">
+        {% if SERVICII|length == 0 %}
+        <p style="font-size: xx-large;"> Cum adica nu aveti servicii?? Si banii din ce o sa-i faceti? </p>
+   
+        {% else %}
+        <p style="font-size: xx-large;"> Serviciile firmei ordonate dupa veniturile generate:</p>
+
+        
+        <div class="detalii_angajat">
+            <table border="thin" style="width: 40%;background-color: beige;">
+                <tr>
+                    <th style="width: 50%;">Denumire</th>
+                    <th style="width: 25%;">Venit</th>
+                    <th style="width: 20%;">Pret</th>
+                    <th style="width: 5%;">Comenzi</th>
+                </tr>
+                {% for serviciu in SERVICII %}
+                <tr>
+                    <th>{{ serviciu[0] }}</th>
+                    <th>{{ serviciu[1] }}</th>
+                    <th>{{ serviciu[2] }}</th>
+                    <th>{{ serviciu[3] }}</th>
+                </tr>
+                {% endfor %}
+            </table>
+        </div><br><br>
+        
+        {% endif %}<br><br>
+        
+    </div>
+    
+</center>
+{% endblock %}

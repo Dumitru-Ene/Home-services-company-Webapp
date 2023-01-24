@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title>HomeExperts - Conecteaza-te sau inregistreaza-te</title>
+{% endblock %}
+
+{% block body %}
+<center><h1>Inregistreaza-te</h1></center>
+            <form action="#" method="post">
+                <center><div class="container">
+                    <div class="imgcontainer">
+                        <img src="/static/images/avatar_img2.png" alt="Avatar" class="avatar">
+                    </div>
+                    <input type='text' placeholder="Introduceti numele" name='first_name' required><br>
+                    <input type='text' placeholder='Introduceti prenumele' name='last_name' required><br>
+                    <label for='sex' ><b>Sex : </b></label>
+                    <input type='radio' name='sex' value='M' required>
+                    <label ><b>M</b></label>
+                    <input type='radio' name='sex' value='F' required>
+                    <label ><b>F</b></label><br>
+                    <input type="email" placeholder="Introduceti adresa de email" name="email" float="right"  required><br>  
+                    <input type="text" placeholder="Introduceti adresa de livrare" name="address" float="right"  required><br>                    
+                    <input type="password" placeholder="Introduceti parola" name="password" required><br>  
+                    {% if email_prost == True %}
+                    <b style="color: red;">  Deja exista un cont asociat acestei adrese de email!</b><br>
+                    {% endif %}
+                    <button type="submit"><b>Inregistraza-te</b></button><br>     
+                    Am deja un cont <a href="/"> Login </a>
+                    </div></center>
+            </form>
+{% endblock %}

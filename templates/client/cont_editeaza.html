@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>HomeExperts - Contul meu</title>
+{% endblock %}
+
+{% block body %}
+<center>
+    <h1>Contul meu</h1>
+</center>
+<center>
+    <div class ="meniu">
+        <nav>
+            <ul>
+                <li>Contul Meu</li>
+                <li><a href="/main/cumpara"> Plaseaza o comanda </a></li>   
+                <li><a href="/main/comenzi"> Comenzile mele </a></li>   
+                <li><a href="/main/logout"> Deconecteaza-ma </a></li>   
+
+            </ul>
+        </nav>
+    </div>
+    <div class="detalii_cont">
+        <form action="#" method="post">
+            <center><div class="container">
+                <input type='text' placeholder="Nume" value="{{ DETALII_CONT[1] }}" name='last_name' required><br>
+                <input type='text' placeholder="Prenume" value= "{{ DETALII_CONT[2] }}" name='first_name' required><br>
+                
+                <label for='sex' ><b>Sex : </b></label>
+                {% if DETALII_CONT[5] == 'M' %}
+                <input type='radio' name='sex' value='M' required checked="checked">
+                <label ><b>M</b></label>
+                <input type='radio' name='sex' value='F' required>
+                <label ><b>F</b></label><br>
+                {% else %}
+                <input type='radio' name='sex' value='M' required >
+                <label ><b>M</b></label>
+                <input type='radio' name='sex' value='F' required checked="checked">
+                <label ><b>F</b></label><br>
+                {% endif %}
+                <input type="email" placeholder="Email" value="{{ DETALII_CONT[3] }}" name="email" float="right"  required><br>  
+                <input type="text" placeholder="Adresa livrare" value="{{ DETALII_CONT[6] }}" name="address" float="right"  required><br>                    
+                {% if email_prost == True %}
+                <b style="color: red;">  Deja exista un cont asociat acestei adrese de email!</b><br>
+                {% endif %}
+                <button type="submit"><b>Salveaza</b></button><br>     
+                </div></center>
+        </form>
+            <b><a href="/main/cont"> Anuleaza </a></b>   
+    </div>
+</center>
+{% endblock %}

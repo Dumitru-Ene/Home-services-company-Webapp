@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>HomeExperts - Contul meu</title>
+{% endblock %}
+
+{% block body %}
+<center>
+    <h1>Schimba Parola</h1>
+</center>
+<center>
+    <div class ="meniu">
+        <nav>
+            <ul>
+                <li>Contul Meu</li>
+                <li><a href="/main/cumpara"> Plaseaza o comanda </a></li>   
+                <li><a href="/main/comenzi"> Comenzile mele </a></li>   
+                <li><a href="/main/logout"> Deconecteaza-ma </a></li>   
+
+            </ul>
+        </nav>
+    </div>
+    <div class="detalii_cont">
+        <form action="#" method="post">
+            <center><div class="container">
+                <input type="password" placeholder="Introduceti parola noua" name="password" required><br>  
+                <input type="password" placeholder="Confirmati parola" name="passwordconf" required><br>
+                {% if parola_proasta == True %}
+                <b style="color: red;">  Parolele nu se potrivesc!</b><br>
+                {% endif %}  
+                <button type="submit"><b>Salveaza</b></button><br>     
+                </div></center>
+        </form>
+            <b><a href="/main/cont"> Anuleaza </a></b>   
+    </div>
+</center>
+{% endblock %}

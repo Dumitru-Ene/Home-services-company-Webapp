@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<title>HomeExperts - Conecteaza-te sau inregistraza-te</title>
+{% endblock %}
+
+{% block body %}
+<center>
+    <h1>Login Into Your Account</h1>
+</center>
+    <form action="#" method="post">
+        <center>
+            <div class="container">
+                <div class="imgcontainer">
+                    <img src="/static/images/avatar_img1.png" alt="Avatar" class="avatar">
+                </div>
+                
+                <input type="email" placeholder="Introduceti adresa de email" name="email" float="right" required><br>
+               
+                <input type="password" placeholder="Introduceti parola" name="password" required><br>
+                {% if parola_proasta == True %}
+                  <b style="color: red;">  Parola sau emailul nu sunt corecte</b><br>
+                {% endif %}
+                <button type="submit"><b>Login</b></button><br>
+                <b> <font>Nu aveti un cont? <a href="http://localhost:8000/signup/">Click aici pentru inregistrare </a></b></font>
+            </div>
+        </center>
+    </form>
+{% endblock %}

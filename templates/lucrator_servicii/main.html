@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>HomeExperts</title>
+{% endblock %}
+
+{% block body %}
+<center>
+    <h1>Bun venit la HomeExperts, {{ NUME_USER }}! Spor la lucru! </h1>
+</center>
+<center>
+    <div class ="meniu">
+        <nav>
+            <ul>
+                <li><a href="/mainworker/cont"> Contul Meu </a></li>
+                <li><a href="/mainworker/comenzinepreluate"> Comenzi Disponibile</a></li>   
+                <li><a href="/mainworker/comenzisearch"> Cautare comenzi  </a></li>   
+
+                <li><a href="/mainworker/comenzipreluate"> Comenzi Preluate  </a></li>   
+                <li><a href="/main/logout"> Deconecteaza-ma </a></li>   
+
+            </ul>
+        </nav>
+    </div>
+    <div class = "imagine">
+        <img src="/static/images/backgroundimg2.jpg">
+
+    </div>
+</center>
+{% endblock %}

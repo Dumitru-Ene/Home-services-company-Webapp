@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>HomeExperts - Contul meu</title>
+{% endblock %}
+
+{% block body %}
+<center>
+    <h1>Contul meu</h1>
+</center>
+<center>
+    <div class ="meniu">
+        <nav>
+            <ul>
+                <li> Contul Meu </li>
+                <li><a href="/mainworker/comenzinepreluate"> Comenzi Disponibile</a></li>   
+                <li><a href="/mainworker/comenzisearch"> Cautare comenzi  </a></li>   
+
+                <li><a href="/mainworker/comenzipreluate"> Comenzi Preluate  </a></li>   
+                <li><a href="/main/logout"> Deconecteaza-ma </a></li>   
+
+            </ul>
+        </nav>
+    </div>
+    <center>
+        <p>#LUCRATOR SERVICII#</p>
+    </center>
+    <div class="detalii_cont">
+        <table>
+            <tr style="background-color:#f0f0f0">
+                <th class="nume_camp">Nume: </th>
+                <th class="continut_camp"> {{ DETALII_CONT[1] }}</th>
+            </tr>
+            <tr>
+                <th class="nume_camp">Preume: </th>
+                <th class="continut_camp"> {{ DETALII_CONT[2] }}</th>
+            </tr>
+            <tr style="background-color:#f0f0f0">
+                <th class="nume_camp">Email: </th>
+                <th class="continut_camp"> {{ DETALII_CONT[3] }}</th>
+            </tr>
+            <tr >
+                <th class="nume_camp">Salariu: </th>
+                <th class="continut_camp"> {{ DETALII_CONT[6] }}</th>
+            </tr>
+            <tr style="background-color:#f0f0f0">
+                <th class="nume_camp">Departament: </th>
+                <th class="continut_camp"> {{ DEPART }}</th>
+            </tr>
+        </table>
+        <ul>
+            <li><a href="/mainworker/cont/chpass"> Schimba parola </a></li>   
+        </ul>
+    </div>
+</center>
+{% endblock %}

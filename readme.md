@@ -1,83 +1,86 @@
-## Cerintele rularii aplicatiei
+## Application required services
 
-Avem nevoie de o distributie de linux. (Este bun si WSL-ul)
+Firstly, the app needs a linux distribution. (WSL is good too)
 
-Pentru inceput, instalam mysql server:
+mysql server installation:
 ```
 $sudo apt install mysql-server
 ```
 
-Acum trebuie sa cream un user pentru mysql:
-Numele si parola userului trebuie sa se potriveasca cu cele folosite de aplicatia web.
-Ele pot fi modificate in fisierul "app.py"
+Creating an user for mysql:
+The username and password must be same with the ones used by the app's sql connector.
+They can be modified in the "app.py" file.
 ```
 $sudo mysql
 mysql> CREATE USER 'dumitr'@'localhost' IDENTIFIED BY 'strongpass';
 ```
-Oferim userului toate privilegiile
+Granting the user all the privileges
 ```
 mysql> GRANT ALL PRIVILEGES ON *.* TO 'dumitr'@'localhost' WITH GRANT OPTION;
 
 mysql> FLUSH PRIVILEGES;
 ```
-Baza de date se poate crea folosind scriptul "creaza_baza_proiect.sql" din directorul "queries/"
+The database can be created and populated using the shell script "queries/initiaza_baza.sh" 
 ```
-$mysql -u dumitr -p"strongpass" < "queries/creaza_baza_proiect.sql" 
+$./initiaza_baza.sh dumitr strongpass" 
 ```
-Aplicatia ruleaza folosind python3. Pentru instalare folosim:
+Installing python3 with:
 ```
 $sudo apt install python3
 ```
-Urmatorul pas este sa cream un virtual environment pentru aplicatie.
+The next step is to create a virtual environment for our python app
 
 ```
 $virtualenv env
 ```
-(virtualenv se poate instala folosind:)
+(virtualenv can be installed using:)
 ```
 $sudo pip3 install virtualenv 
 ```
 
-Activam virtual environmentul:
+To activate the env we just created we use:
 ```
 $source env/bin/activate
 ```
-Instalam modulele de python necesare apicatiei:
+Run this command to install the required python3 modules:
 ```
 $pip3 install -r requirements.txt
 ```
 
-Ultimul pas este sa pornim aplicatia folosind:
+Lastly, we can start the app just by using this command:
 ```
 $python3 app.py
 ```
 
-## Structura aplicatiei
+## The structure of the web app
 
-Aplicatia a fost creata folosind biblioteca de python Flask.
-In fisierul app.py avem functionalitatile de backend ale aplicatiei si tot din app.py se apeleaza functii de
-template rendering pentru frontend. Template-urile sunt scrise integral in HTML si jinja2.
+The web app was created using the Flask python module for web development.
+The python script "app.py" contains the backend functionalities and also handles the frondend part by 
+calling template rendering functions. The templates consist only in HTML and jinja2.
 
-Baza de date a fost proiectata cu limbajul SQL. In directorul "queries" se afla scriptul SQL "creaza_baza_proiect.sql"
-in care putem vedea tabelele bazei de date si relatiile dintre acestea.
+The database was designed using SQL. In the "queries" directory we can find the SQL script "creaza_baza_proiect.sql"
+in which we can see how exactly the database tables and their relations were designed.
 
-Toate interogarile bazei de date au fost scrise folosind limbaj SQL.
+Each and every query was made using SQL.
 
-## Functionalitatile aplicatiei
+## The app functionallities
 
-Web appul dispune de 4 tipuri de useri si fiecare tip user are o interfata unica si actiuni specifice. 
+Up to this date, the web app consists of four types of users that have individual interfaces and specific actions. 
 
-Clientii pot plasa/anula/modifica comenzi, sa verifice statusul comenzilor lor (daca o comanda a fost preluata complet sau nu)
-si sa isi editeze datele personale.
+Customers can place/cancel/modify orders, check the status of their orders and to edit their personal data.
 
-Angajatii din departamentul de servicii pot verifica comenzile plasate de clienti, sa preia sau sa renunte la servicii
-de pe comenzi, sa vizualizeze comenzile care contin macar un serviciu preluat de acestia. Tot ei dispun de un tool de cu 
-care pot cauta comenzi disponibile dupa adresa.
+Employees from the services department can check the available orders placed by customers, accept services
+from the orders and check the orders that contain at least one service that the employee accepted. The employees can 
+drop out the services they accepted any time so others employees can accept them. They also have a search tool with
+for available orders by address.
 
-Managerii de departamente pot adauga servicii noi pentru vanzare si sa vada diferite statistici legate de comenzile, serviciile sau
-angajatii firmei. (ex: Angajatul care a produs cel mai mult venit prin vanzarea de produse, Angajatul care are cele mai multe 
-comenzi preluate integral, Comanda cu cele mai multe servicii, Comenzile cu suma peste medie etc.)
 
-Toate tipurile de utilizatori isi pot verifica datele personale si sa isi schimbe parola.
+Department managers can add new services for sale and see different stats related to the company orders, services
+or employees. (eg: The employee who produced the most income by completing services off orders, the employee who has the most
+full orders completed, The order with the most services,The orders that have a total price that exeeds the average, etc.)
 
-Oricand este posibila inregistrarea unui nou cont de client cu o adresa de email noua.
+Each type of user can check their personal data and change the password.
+
+A new customer account can be created in the signup page at any time.
+
+The app features user sessions which allows for multiple users to be connected and do different actions at the same time.

@@ -12,7 +12,7 @@ Numele si parola userului trebuie sa se potriveasca cu cele folosite de aplicati
 Ele pot fi modificate in fisierul "app.py"
 ```
 $sudo mysql
-mysql> CREATE USER 'dumitr'@'localhost' IDENTIFIED BY 'mama';
+mysql> CREATE USER 'dumitr'@'localhost' IDENTIFIED BY 'strongpass';
 ```
 Oferim userului toate privilegiile
 ```
@@ -22,20 +22,22 @@ mysql> FLUSH PRIVILEGES;
 ```
 Baza de date se poate crea folosind scriptul "creaza_baza_proiect.sql" din directorul "queries/"
 ```
-$mysql -u dumitr -p"mama" < "queries/creaza_baza_proiect.sql" 
+$mysql -u dumitr -p"strongpass" < "queries/creaza_baza_proiect.sql" 
 ```
 Aplicatia ruleaza folosind python3. Pentru instalare folosim:
 ```
 $sudo apt install python3
 ```
 Urmatorul pas este sa cream un virtual environment pentru aplicatie.
-	
-	*virtualenv se poate instala folosind:
-```
-	$sudo pip3 install virtualenv 
+
 ```
 $virtualenv env
 ```
+(virtualenv se poate instala folosind:)
+```
+$sudo pip3 install virtualenv 
+```
+
 Activam virtual environmentul:
 ```
 $source env/bin/activate

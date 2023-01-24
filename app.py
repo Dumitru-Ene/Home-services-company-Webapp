@@ -11,6 +11,10 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
+connectoruser="dumitr"
+connectorpass="strongpass"
+connectordb="ProiectDB"
+connectorhost="localhost"
 
 @app.route('/', methods=['POST', 'GET'])
 def login_page():
@@ -18,7 +22,7 @@ def login_page():
         em =request.form['email']
         pwd = request.form['password']
         try:
-            m=sql.connect(host="localhost",user="dumitr",passwd="mama",database='ProiectDB')
+            m=sql.connect(host=connectorhost,user=connectoruser,passwd=connectorpass,database=connectordb)
             cursor=m.cursor()
         except:
             return ("problema la conexiunea cu baza de date")
@@ -76,7 +80,7 @@ def login_page():
 def signup_page():
     if request.method=="POST":
         try:
-            m=sql.connect(host="localhost",user="dumitr",passwd="mama",database='ProiectDB')
+            m=m=sql.connect(host=connectorhost,user=connectoruser,passwd=connectorpass,database=connectordb)
             cursor=m.cursor()
         except:
             return ("problema la conexiunea cu baza de date")
@@ -135,7 +139,7 @@ def main_cont():
     if session["Tip_user"] != 'client':
         return redirect('/')
     try:
-            m=sql.connect(host="localhost",user="dumitr",passwd="mama",database='ProiectDB')
+            m=m=sql.connect(host=connectorhost,user=connectoruser,passwd=connectorpass,database=connectordb)
             cursor=m.cursor()
     except:
         return ("problema la conexiunea cu baza de date")
@@ -170,7 +174,7 @@ def main_cont_editeaza():
         return redirect('/')
     if request.method=="POST":
         try:
-            m=sql.connect(host="localhost",user="dumitr",passwd="mama",database='ProiectDB')
+            m=m=sql.connect(host=connectorhost,user=connectoruser,passwd=connectorpass,database=connectordb)
             cursor=m.cursor()
         except:
             return ("problema la conexiunea cu baza de date")
@@ -212,7 +216,7 @@ def main_cont_chpass():
         return redirect('/')
     if request.method=="POST":
         try:
-            m=sql.connect(host="localhost",user="dumitr",passwd="mama",database='ProiectDB')
+            m=m=sql.connect(host=connectorhost,user=connectoruser,passwd=connectorpass,database=connectordb)
             cursor=m.cursor()
         except:
             return ("problema la conexiunea cu baza de date")
@@ -246,7 +250,7 @@ def main_cumpara():
         return redirect('/')
     
     try:
-        m=sql.connect(host="localhost",user="dumitr",passwd="mama",database='ProiectDB')
+        m=m=sql.connect(host=connectorhost,user=connectoruser,passwd=connectorpass,database=connectordb)
         cursor=m.cursor()
     except:
         return ("problema la conexiunea cu baza de date")
@@ -333,7 +337,7 @@ def main_comenzi():
     if session["Tip_user"] != 'client':
         return redirect('/')
     try:
-        m=sql.connect(host="localhost",user="dumitr",passwd="mama",database='ProiectDB')
+        m=m=sql.connect(host=connectorhost,user=connectoruser,passwd=connectorpass,database=connectordb)
         cursor=m.cursor()
     except:
         return ("problema la conexiunea cu baza de date")
@@ -382,7 +386,7 @@ def main_anuleaza_comanda(index):
         return redirect('/')
     print(index)
     try:
-        m=sql.connect(host="localhost",user="dumitr",passwd="mama",database='ProiectDB')
+        m=m=sql.connect(host=connectorhost,user=connectoruser,passwd=connectorpass,database=connectordb)
         cursor=m.cursor()
     except:
         return ("problema la conexiunea cu baza de date")
@@ -416,7 +420,7 @@ def main_editeaza_comanda(index):
         return redirect('/')
     print(index)
     try:
-        m=sql.connect(host="localhost",user="dumitr",passwd="mama",database='ProiectDB')
+        m=m=sql.connect(host=connectorhost,user=connectoruser,passwd=connectorpass,database=connectordb)
         cursor=m.cursor()
     except:
         return ("problema la conexiunea cu baza de date")
@@ -542,7 +546,7 @@ def mainworker_cont_page():
     if session["Tip_user"] != 'worker':
         return redirect('/')
     try:
-        m=sql.connect(host="localhost",user="dumitr",passwd="mama",database='ProiectDB')
+        m=m=sql.connect(host=connectorhost,user=connectoruser,passwd=connectorpass,database=connectordb)
         cursor=m.cursor()
     except:
         return ("problema la conexiunea cu baza de date")
@@ -569,7 +573,7 @@ def mainworker_chpass_page():
 
     if request.method=="POST":
         try:
-            m=sql.connect(host="localhost",user="dumitr",passwd="mama",database='ProiectDB')
+            m=m=sql.connect(host=connectorhost,user=connectoruser,passwd=connectorpass,database=connectordb)
             cursor=m.cursor()
         except:
             return ("problema la conexiunea cu baza de date")
@@ -603,7 +607,7 @@ def mainworker_comenzinepreluate():
     if session["Tip_user"] != 'worker':
         return redirect('/')
     try:
-        m=sql.connect(host="localhost",user="dumitr",passwd="mama",database='ProiectDB')
+        m=m=sql.connect(host=connectorhost,user=connectoruser,passwd=connectorpass,database=connectordb)
         cursor=m.cursor()
     except:
         return ("problema la conexiunea cu baza de date")
@@ -691,7 +695,7 @@ def mainworker_comenzipreluate():
     if session["Tip_user"] != 'worker':
         return redirect('/')
     try:
-        m=sql.connect(host="localhost",user="dumitr",passwd="mama",database='ProiectDB')
+        m=m=sql.connect(host=connectorhost,user=connectoruser,passwd=connectorpass,database=connectordb)
         cursor=m.cursor()
     except:
         return ("problema la conexiunea cu baza de date")
@@ -789,7 +793,7 @@ def mainworker_cautare_comenzi():
     if session["Tip_user"] != 'worker':
         return redirect('/')
     try:
-        m=sql.connect(host="localhost",user="dumitr",passwd="mama",database='ProiectDB')
+        m=m=sql.connect(host=connectorhost,user=connectoruser,passwd=connectorpass,database=connectordb)
         cursor=m.cursor()
     except:
         return ("problema la conexiunea cu baza de date")
@@ -863,7 +867,7 @@ def mainmanager_chpass_page():
 
     if request.method=="POST":
         try:
-            m=sql.connect(host="localhost",user="dumitr",passwd="mama",database='ProiectDB')
+            m=m=sql.connect(host=connectorhost,user=connectoruser,passwd=connectorpass,database=connectordb)
             cursor=m.cursor()
         except:
             return ("problema la conexiunea cu baza de date")
@@ -895,7 +899,7 @@ def mainmanager_cont_page():
     if session["Tip_user"] != 'manager':
         return redirect('/')
     try:
-        m=sql.connect(host="localhost",user="dumitr",passwd="mama",database='ProiectDB')
+        m=m=sql.connect(host=connectorhost,user=connectoruser,passwd=connectorpass,database=connectordb)
         cursor=m.cursor()
     except:
         return ("problema la conexiunea cu baza de date")
@@ -920,7 +924,7 @@ def mainmanager_workerstats_page():
     if session["Tip_user"] != 'manager':
         return redirect('/')
     try:
-        m=sql.connect(host="localhost",user="dumitr",passwd="mama",database='ProiectDB')
+        m=m=sql.connect(host=connectorhost,user=connectoruser,passwd=connectorpass,database=connectordb)
         cursor=m.cursor()
     except:
         return ("problema la conexiunea cu baza de date")
@@ -1009,7 +1013,7 @@ def mainmanager_serviciistats_page():
     if session["Tip_user"] != 'manager':
         return redirect('/')
     try:
-        m=sql.connect(host="localhost",user="dumitr",passwd="mama",database='ProiectDB')
+        m=m=sql.connect(host=connectorhost,user=connectoruser,passwd=connectorpass,database=connectordb)
         cursor=m.cursor()
     except:
         return ("problema la conexiunea cu baza de date")
@@ -1050,7 +1054,7 @@ def mainmanager_comenzistats_page():
     if session["Tip_user"] != 'manager':
         return redirect('/')
     try:
-        m=sql.connect(host="localhost",user="dumitr",passwd="mama",database='ProiectDB')
+        m=m=sql.connect(host=connectorhost,user=connectoruser,passwd=connectorpass,database=connectordb)
         cursor=m.cursor()
     except:
         return ("problema la conexiunea cu baza de date")
@@ -1146,7 +1150,7 @@ def mainmanager_comenziall_page():
     if session["Tip_user"] != 'manager':
         return redirect('/')
     try:
-        m=sql.connect(host="localhost",user="dumitr",passwd="mama",database='ProiectDB')
+        m=m=sql.connect(host=connectorhost,user=connectoruser,passwd=connectorpass,database=connectordb)
         cursor=m.cursor()
     except:
         return ("problema la conexiunea cu baza de date")

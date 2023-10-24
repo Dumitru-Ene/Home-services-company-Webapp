@@ -67,7 +67,7 @@ Each and every query was made using SQL.
 
 Up to this date, the web app consists of four types of users that have individual interfaces and specific actions. 
 
-Customers can place/cancel/modify orders, check the status of their orders and to edit their personal data.
+Customers can place/cancel/modify orders, check the status of their orders and edit their personal data.
 
 Employees from the services department can check the available orders placed by customers, accept services
 from the orders and check the orders that contain at least one service that the employee accepted. The employees can 
